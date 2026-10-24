@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>realtime-chat</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; display: flex; justify-content: center; }
+    main { width: min(40rem, 100%); padding: 1rem; box-sizing: border-box; }
+    h1 { font-size: 1.25rem; }
+    form { display: flex; gap: .5rem; margin: .5rem 0; }
+    input { flex: 1; padding: .4rem; min-width: 0; }
+    button { padding: .4rem .8rem; }
+    #status { font-size: .85rem; opacity: .8; }
+    #log { height: 20rem; overflow-y: auto; border: 1px solid #8886; padding: .5rem; list-style: none; margin: .5rem 0; }
+    #log li { margin: .15rem 0; word-wrap: break-word; }
+    #log li.sys { opacity: .65; font-style: italic; }
+    #log li.err { color: #c33; }
+    .time { opacity: .55; font-size: .8em; margin-right: .4em; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>realtime-chat</h1>
+  <div id="status">Connecting...</div>
+  <form id="join-form">
+    <input id="room" placeholder="room" value="general" maxlength="32" required>
+    <input id="nick" placeholder="nickname" maxlength="24" required>
+    <button>Join</button>
+  </form>
+  <div id="users"></div>
+  <ul id="log" aria-live="polite"></ul>
+  <form id="msg-form">
+    <input id="text" placeholder="Type a message" maxlength="500" autocomplete="off" disabled>
+    <button id="send" disabled>Send</button>
+    <button id="leave" type="button" disabled>Leave</button>
+  </form>
+</main>
+<script src="/client.js"></script>
+</body>
+</html>
